@@ -1,5 +1,6 @@
 package com.imooc;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,15 +10,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class LoggerTest {
 
-    private final Logger logger = LoggerFactory.getLogger(LoggerTest.class);
+    //    private final Logger logger = LoggerFactory.getLogger(LoggerTest.class);
+    //    改用注解形式
 
     @Test
-    public void test1(){
-        logger.debug("debug...");
-        logger.info("info...");
-        logger.error("error...");
+    public void test1() {
+        String name = "imooc";
+        String pwd = "123456";
+        log.debug("debug...");
+        log.info("info...");
+        log.info("name:"+name+" pwd:"+pwd);
+        log.info("name:{},pwd:{}",name,pwd);
+        log.error("error...");
 
     }
 }
