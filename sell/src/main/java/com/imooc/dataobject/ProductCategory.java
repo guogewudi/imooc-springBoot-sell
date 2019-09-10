@@ -11,16 +11,22 @@ import javax.persistence.Id;
  */
 @Entity
 public class ProductCategory {
-    /** 类目id.*/
+    /**
+     * 类目id.
+     */
     @Id
     @GeneratedValue
     private Integer categoryId;
 
-    /** 类目名字.*/
-    private String categoreName;
+    /**
+     * 类目名字.
+     */
+    private String categoryName;
 
-    /** 类目编号.*/
-    private String categoreType;
+    /**
+     * 类目编号.
+     */
+    private String categoryType;
 
     public Integer getCategoryId() {
         return categoryId;
@@ -30,28 +36,28 @@ public class ProductCategory {
         this.categoryId = categoryId;
     }
 
-    public String getCategoreName() {
-        return categoreName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoreName(String categoreName) {
-        this.categoreName = categoreName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public String getCategoreType() {
-        return categoreType;
+    public String getCategoryType() {
+        return categoryType;
     }
 
-    public void setCategoreType(String categoreType) {
-        this.categoreType = categoreType;
+    public void setCategoryType(String categoryType) {
+        this.categoryType = categoryType;
     }
 
     @Override
     public String toString() {
         return "ProductCategory{" +
                 "categoryId=" + categoryId +
-                ", categoreName='" + categoreName + '\'' +
-                ", categoreType='" + categoreType + '\'' +
+                ", categoryName='" + categoryName + '\'' +
+                ", categoryType='" + categoryType + '\'' +
                 '}';
     }
 }
