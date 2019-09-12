@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -25,13 +29,22 @@ public class CategoryServiceImplTest {
 
     @Test
     public void findAll() {
+        List<ProductCategory> productCategoryList = categoryServiceImpl.findAll();
+        Assert.assertNotEquals(0,productCategoryList.size());
     }
 
     @Test
     public void findByCategoryTypeIn() {
+        List<ProductCategory> productCategoryList = categoryServiceImpl.findByCategoryTypeIn(Arrays.asList(1, 2, 3, 4));
+        Assert.assertNotEquals(0,productCategoryList.size());
     }
 
     @Test
+    @Transactional
     public void save() {
+        ProductCategory productCategory = new ProductCategory("男生专线",10);
+        ProductCategory result = categoryServiceImpl.save(productCategory);
+        System.out.println(result.toString());
+        Assert.assertNotNull(result);
     }
 }
