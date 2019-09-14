@@ -2,6 +2,7 @@ package com.imooc.service.impl;
 
 import com.imooc.dao.ProductCategoryDao;
 import com.imooc.dataobject.ProductCategory;
+import com.imooc.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
