@@ -1,29 +1,20 @@
-package com.imooc.dataobject;
+package com.imooc.dto;
 
-import com.imooc.enums.OrderStatusEnum;
-import com.imooc.enums.PayStatusEnum;
-import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
+import com.imooc.dataobject.OrderDetail;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @ Author: 庞世伟
- * @ Description: 订单表
- * @ Date: Created in 2019/9/16 17:47
+ * @ Description: 订单的DTO(数据传输对象)
+ * @ Date: Created in 2019/9/17 17:53
  */
-@Entity
-@Data
-@DynamicUpdate
-public class OrderMaster {
 
+public class OrderDTO {
     /** 订单ID. */
-    @Id
+
     private String orderId;
 
     /** 买家名字. */
@@ -42,10 +33,10 @@ public class OrderMaster {
     private BigDecimal orderAmount;
 
     /** 订单状态,默认0新下单.*/
-    private Integer orderStatus = OrderStatusEnum.NEW.getCode();
+    private Integer orderStatus;
 
     /** 支付状态. 默认0未支付*/
-    private Integer payStatus = PayStatusEnum.WAIT.getCode();
+    private Integer payStatus;
 
     /** 创建时间. */
     private Date createTime;
@@ -53,4 +44,5 @@ public class OrderMaster {
     /** 修改时间. */
     private Date updateTime;
 
+    private List<OrderDetail> orderDetailList;
 }
