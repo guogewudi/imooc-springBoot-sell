@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * @ Author: 庞世伟
- * @ Description: 订单状态枚举类
+ * @ Description: 订单状态
  * @ Date: Created in 2019/9/16 17:55
  */
 @Getter

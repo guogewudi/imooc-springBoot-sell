@@ -1,6 +1,7 @@
 package com.imooc.dto;
 
 import com.imooc.dataobject.OrderDetail;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.List;
  * @ Description: 订单的DTO(数据传输对象)
  * @ Date: Created in 2019/9/17 17:53
  */
-
+@Data
 public class OrderDTO {
     /** 订单ID. */
 
