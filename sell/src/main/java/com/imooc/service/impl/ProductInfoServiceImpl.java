@@ -32,7 +32,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 
     @Override
     public ProductInfo findOne(String productId) {
-       return productInfoDao.findOne(productId);
+        return productInfoDao.findOne(productId);
     }
 
     //查找所有上架商品
@@ -49,7 +49,17 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     //加库存
     @Override
     public void increseStock(List<CartDTO> cartDTOList) {
+        for (CartDTO cartDTO : cartDTOList) {
+            ProductInfo productInfo = productInfoDao.findOne(cartDTO.getProductId());
+            if (productInfo == null) {
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+            }
+            Integer result = productInfo.getProductStock() + cartDTO.getProductQuantity();
 
+            productInfo.setProductStock(result);
+
+            productInfoDao.save(productInfo);
+        }
     }
 
     //减库存
@@ -60,13 +70,13 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 
             ProductInfo productInfo = productInfoDao.findOne(cartDTO.getProductId());
 
-            if(productInfo==null){
+            if (productInfo == null) {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
 
             Integer result = productInfo.getProductStock() - cartDTO.getProductQuantity();
-            if(result < 0){
-                throw  new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
+            if (result < 0) {
+                throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
             }
 
             productInfo.setProductStock(result);
