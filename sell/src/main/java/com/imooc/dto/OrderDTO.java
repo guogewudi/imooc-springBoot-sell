@@ -1,6 +1,9 @@
 package com.imooc.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.dataobject.OrderDetail;
+import com.imooc.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,7 +15,11 @@ import java.util.List;
  * @ Description: 订单的DTO(数据传输对象)
  * @ Date: Created in 2019/9/17 17:53
  */
+
+
 @Data
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL) 该方式废弃了
+//@JsonInclude(JsonInclude.Include.NON_NULL)//返回json时，不返回值为空的属性。这里改为全局配置，省去每个类都加此注解。
 public class OrderDTO {
     /** 订单ID. */
 
@@ -40,9 +47,11 @@ public class OrderDTO {
     private Integer payStatus;
 
     /** 创建时间. */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
-    /** 修改时间. */
+    /** 更新时间. */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
     private List<OrderDetail> orderDetailList;
